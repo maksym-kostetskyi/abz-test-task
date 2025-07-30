@@ -1,0 +1,41 @@
+// Colors
+$primary-color: #f4e041;
+$secondary-color: #00bdd3;
+$background-color: #f8f8f8;
+$text-color: rgb(0, 0, 0, 87%);
+$error-color: #ff0000; // Example error color
+$border-color: #cccccc; // Example border color
+
+// Fonts
+$font-family-nunito: "Nunito", sans-serif;
+
+// Font Sizes
+$font-size-h1: 40px;
+$font-size-body: 16px;
+
+//line-height
+$line-height-body: 26px;
+$line-height-h1: 40px;
+
+// Spacing
+$spacing-xs: 5px;
+$spacing-sm: 10px;
+$spacing-md: 20px;
+$spacing-lg: 30px;
+$spacing-xl: 40px;
+
+// Border Radius
+$border-radius: 80px;
+
+// Box Shadows
+$box-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+$box-shadow-md: 0 4px 8px rgba(0, 0, 0, 0.15);
+
+// Transition
+$transition-speed: 0.3s;
+$transition-timing-function: ease-in-out;
+
+// Breakpoints for mobile-first media queries
+$breakpoint-tablet: 768px;
+$breakpoint-laptop: 1024px;
+$breakpoint-desktop: 2560px;

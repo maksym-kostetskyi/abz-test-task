@@ -1,0 +1,24 @@
+@use "./variables" as vars;
+
+// Responsive breakpoint mixins for mobile-first approach
+
+// Tablet and up (768px+)
+@mixin on-tablet {
+  @media (min-width: vars.$breakpoint-tablet) {
+    @content;
+  }
+}
+
+// Desktop and up (1024px+)
+@mixin on-laptop {
+  @media (min-width: vars.$breakpoint-laptop) {
+    @content;
+  }
+}
+
+// Large desktop and up (2560px+)
+@mixin on-desktop {
+  @media (min-width: vars.$breakpoint-desktop) {
+    @content;
+  }
+}

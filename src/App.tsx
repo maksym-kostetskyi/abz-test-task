@@ -1,10 +1,15 @@
+import About from "./components/About/About";
+import Get from "./components/Get/GetUsers";
+import Header from "./components/Header/Header";
 import React from "react";
 
 const App: React.FC = () => {
   return (
-    <div>
-      <h1>Initial commit</h1>
-    </div>
+    <>
+      <Header />
+      <About />
+      <Get />
+    </>
   );
 };
 
