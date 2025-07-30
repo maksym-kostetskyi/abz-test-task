@@ -30,6 +30,10 @@ module.exports = {
         test: /\.css$/,
         use: ["style-loader", "css-loader"],
       },
+      {
+        test: /\.(scss|sass)$/,
+        use: ["style-loader", "css-loader", "sass-loader"],
+      },
     ],
   },
   plugins: [
@@ -43,5 +47,5 @@ module.exports = {
     port: 9000,
     open: true,
   },
-  mode: "development", // Or 'production'
+  mode: "development",
 };
