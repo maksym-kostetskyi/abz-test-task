@@ -7,8 +7,8 @@ const Header: React.FC = () => {
     <header className="header">
       <img className="header__logo" src={logo} alt="Logo" />
       <div className="header__buttons">
-        <button className="header__button">Users</button>
-        <button className="header__button">Sign up</button>
+        <button className="header__button button--primary">Users</button>
+        <button className="header__button button--primary">Sign up</button>
       </div>
     </header>
   );

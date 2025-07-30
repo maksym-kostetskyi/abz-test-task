@@ -15,8 +15,9 @@ html {
 }
 
 body {
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
+  max-width: 1170px; // Restrict body width for better readability
   font-family: vars.$font-family-nunito;
   color: vars.$text-color;
   background-color: vars.$background-color;
@@ -69,24 +70,22 @@ button {
   font-weight: 400;
   font-size: vars.$font-size-body; // Mobile-first button font size
   cursor: pointer;
-  transition: background-color vars.$transition-speed
-      vars.$transition-timing-function,
-    color vars.$transition-speed vars.$transition-timing-function,
-    border-color vars.$transition-speed vars.$transition-timing-function;
-  border: 1px solid transparent;
-  background-color: vars.$primary-color;
   border-radius: vars.$border-radius;
+  border: none;
+}
 
+.button {
   &--primary {
     background-color: vars.$primary-color;
     color: vars.$text-color;
 
     &:hover {
-      background-color: color.adjust(vars.$primary-color, $lightness: -10%);
+      background-color: vars.$hover-color;
     }
 
     &:disabled {
-      background-color: color.adjust(vars.$primary-color, $lightness: 15%);
+      background-color: vars.$disabled-color;
+      color: #fff;
       cursor: not-allowed;
       opacity: 0.7;
     }

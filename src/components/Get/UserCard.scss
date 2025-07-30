@@ -1,17 +1,31 @@
+@use "../../styles/mixins" as mix;
+@use "../../styles/variables" as vars;
+
 .user-card {
-  width: auto;
+  width: 100%;
   background-color: #fff;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  padding: 20px;
+  margin: 0 auto;
+
+  @include mix.on-tablet {
+    padding: 24px;
+  }
+
+  @include mix.on-desktop {
+    padding: 20px;
+  }
 
   &__photo {
     width: 70px;
     height: 70px;
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     border-radius: 50%;
+    object-fit: cover; // For img tag
   }
 }
