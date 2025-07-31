@@ -5,8 +5,13 @@ import { PostUserRequest } from "@/src/types/PostUser";
 import getPositions from "@/src/api/getPositions";
 import getToken from "@/src/api/getToken";
 import postUser from "@/src/api/postUser";
+import successImage from "@/assets/success-image.svg";
 
-const Post: React.FC = () => {
+interface PostProps {
+  onUserRegistered?: () => void;
+}
+
+const Post: React.FC<PostProps> = ({ onUserRegistered }) => {
   const [positions, setPositions] = useState<Position[]>([]);
   const [loading, setLoading] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -66,7 +71,7 @@ const Post: React.FC = () => {
       formData.name.trim().length >= 2 &&
       formData.name.trim().length <= 60 &&
       /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email) &&
-      /^\+380\d{9}$/.test(formData.phone) &&
+      /^\+38\d{10}$/.test(formData.phone) &&
       formData.position_id > 0 &&
       formData.photo !== null &&
       formData.photo?.type !== undefined &&
@@ -96,11 +101,11 @@ const Post: React.FC = () => {
     }
 
     // Phone validation
-    const phoneRegex = /^\+380\d{9}$/;
+    const phoneRegex = /^\+38\d{10}$/;
     if (!formData.phone.trim()) {
       newErrors.phone = "Phone is required";
     } else if (!phoneRegex.test(formData.phone)) {
-      newErrors.phone = "Phone should start with +380 and contain 9 digits";
+      newErrors.phone = "Phone should start with +38 and contain 10 digits";
     }
 
     // Position validation
@@ -162,6 +167,10 @@ const Post: React.FC = () => {
         position_id: positions[0]?.id || 0,
         photo: null,
       });
+      // Notify parent to reload/collapse users
+      if (onUserRegistered) {
+        onUserRegistered();
+      }
     } catch (error) {
       console.error("Error submitting form:", error);
       setErrors({ submit: "Failed to register user. Please try again." });
@@ -172,14 +181,9 @@ const Post: React.FC = () => {
 
   if (success) {
     return (
-      <div className="post">
+      <div className="post post--success">
         <h1 className="post__title">User successfully registered</h1>
-        <div className="post__success">
-          <p>New user has been successfully registered!</p>
-          <button className="button--primary" onClick={() => setSuccess(false)}>
-            Register another user
-          </button>
-        </div>
+        <img className="post__success-image" src={successImage} alt="Success" />
       </div>
     );
   }
@@ -253,10 +257,10 @@ const Post: React.FC = () => {
                   value={position.id}
                   checked={formData.position_id === position.id}
                   onChange={handleInputChange}
+                  className="radio-button__input"
                 />
-                <label htmlFor={`position-${position.id}`}>
-                  {position.name}
-                </label>
+                <label htmlFor={`position-${position.id}`}></label>
+                <div className="radio-button__label">{position.name}</div>
               </div>
             ))}
           </div>

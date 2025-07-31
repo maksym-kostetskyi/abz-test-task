@@ -119,80 +119,9 @@ button {
   }
 }
 
-.label {
-  display: block;
-  font-family: vars.$font-family-nunito;
-  font-size: vars.$font-size-body;
-  font-weight: 400;
-  color: vars.$text-color;
-  margin-bottom: vars.$spacing-xs;
-}
-
 .error-text {
   font-family: vars.$font-family-nunito;
   font-size: 0.8rem;
   color: vars.$error-color;
   margin-top: vars.$spacing-xs;
-}
-
-// Radio Buttons
-.radio-button-group {
-  display: flex;
-  flex-direction: column;
-
-  .radio-button {
-    display: flex;
-    align-items: center;
-    margin-bottom: vars.$spacing-xs;
-
-    input[type="radio"] {
-      display: none;
-
-      + label {
-        position: relative;
-        padding-left: vars.$spacing-md;
-        cursor: pointer;
-        font-size: vars.$font-size-body;
-
-        &::before {
-          content: "";
-          position: absolute;
-          left: 0;
-          top: 50%;
-          transform: translateY(-50%);
-          width: 18px;
-          height: 18px;
-          border: 1px solid vars.$border-color;
-          border-radius: 50%;
-          background-color: #fff;
-          transition: all vars.$transition-speed
-            vars.$transition-timing-function;
-        }
-
-        &::after {
-          content: "";
-          position: absolute;
-          left: 4px;
-          top: 50%;
-          transform: translateY(-50%);
-          width: 10px;
-          height: 10px;
-          background-color: vars.$primary-color;
-          border-radius: 50%;
-          opacity: 0;
-          transition: opacity vars.$transition-speed
-            vars.$transition-timing-function;
-        }
-      }
-
-      &:checked + label::before {
-        border-color: vars.$primary-color;
-        background-color: color.adjust(vars.$primary-color, $lightness: 45%);
-      }
-
-      &:checked + label::after {
-        opacity: 1;
-      }
-    }
-  }
 }

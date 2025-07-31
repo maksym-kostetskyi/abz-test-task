@@ -3,6 +3,7 @@
 
 .user-card {
   width: 100%;
+  min-width: 0;
   background-color: #fff;
   border-radius: 8px;
   display: flex;
@@ -11,6 +12,7 @@
   gap: 20px;
   padding: 20px;
   margin: 0 auto;
+  overflow: hidden; // Ensures content doesn't overflow the card
 
   @include mix.on-tablet {
     padding: 24px;
@@ -26,6 +28,27 @@
     background-size: cover;
     background-position: center;
     border-radius: 50%;
-    object-fit: cover; // For img tag
+    object-fit: cover;
+  }
+
+  // Apply single-line ellipsis to name, email, and phone
+  &__name,
+  &__email,
+  &__phone,
+  &__position {
+    white-space: nowrap; /* Prevents text from wrapping */
+    overflow: hidden; /* Hides any text that goes beyond the element's box */
+    text-overflow: ellipsis; /* Displays the ellipsis (...) for clipped text */
+    width: 100%;
+    min-width: 0;
+    display: block;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    width: 100%;
   }
 }

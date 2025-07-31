@@ -1,5 +1,6 @@
 @use "../../styles/mixins" as mix;
 @use "../../styles/variables.scss" as var;
+@use "sass:color";
 
 // Post component container
 .post {
@@ -13,7 +14,22 @@
   margin-bottom: 100px;
 
   &__title {
-    margin-bottom: 50px;
+    margin-bottom: 20px;
+  }
+
+  // Success state styling
+  &--success {
+    .post__title {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__success-image {
+    display: block;
+    margin: 32px auto;
+    width: 100%;
+    max-width: 328px;
+    height: auto;
   }
 
   // Main form container
@@ -65,10 +81,10 @@
   // Labels
   .label {
     &.label[for="phone"] {
+      padding-left: 15px;
       font-size: 12px;
-      line-height: 14px;
-      color: var.$text-color;
-      opacity: 0.5;
+      line-height: 12px;
+      color: var.$form-text-color;
       margin-top: var.$spacing-xs;
     }
   }
@@ -79,11 +95,11 @@
     min-height: 54px;
     padding: 14px 16px;
     border: 1px solid var.$form-input-color;
-    color: var.$form-input-color;
+    color: var.$form-text-color;
     background-color: transparent;
 
     &::placeholder {
-      color: var.$form-input-color;
+      color: var.$form-text-color;
     }
 
     &--error {
@@ -180,32 +196,73 @@
     }
   }
 
-  // Radio button group
+  // Radio Buttons
   .radio-button-group {
     display: flex;
+    gap: 10px;
+    justify-content: center;
     flex-direction: column;
-    gap: var.$spacing-xs;
+
+    &__label {
+      display: block;
+      font-family: var.$font-family-nunito;
+      font-size: var.$font-size-body;
+      font-weight: 400;
+      color: var.$text-color;
+      margin-bottom: var.$spacing-xs;
+    }
 
     .radio-button {
       display: flex;
       align-items: center;
 
-      input[type="radio"] + label {
-        color: rgba(0, 0, 0, 0.87);
-      }
+      input[type="radio"] {
+        display: none;
 
-      // Checked state
-      input[type="radio"]:checked + label::before {
-        border-color: var.$secondary-color;
-      }
-      input[type="radio"]:checked + label::after {
-        background: var.$secondary-color;
-        border-color: var.$secondary-color;
-      }
+        + label {
+          position: relative;
+          padding-left: 25px;
+          cursor: pointer;
+          font-size: var.$font-size-body;
 
-      // Unchecked state
-      input[type="radio"]:not(:checked) + label::before {
-        border: 1px solid #d0cfcf;
+          &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 18px;
+            height: 18px;
+            border: 1px solid var.$border-color;
+            border-radius: 50%;
+            background-color: #fff;
+            transition: all var.$transition-speed
+              var.$transition-timing-function;
+          }
+
+          &::after {
+            content: "";
+            position: absolute;
+            left: 4px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 10px;
+            height: 10px;
+            background-color: var.$secondary-color;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity var.$transition-speed
+              var.$transition-timing-function;
+          }
+        }
+
+        &:checked + label::before {
+          border-color: var.$secondary-color;
+        }
+
+        &:checked + label::after {
+          opacity: 1;
+        }
       }
     }
   }

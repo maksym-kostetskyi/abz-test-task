@@ -2,6 +2,16 @@ import React from "react";
 import "./About.scss";
 
 const About: React.FC = () => {
+  const scrollToPostSection = () => {
+    const element = document.getElementById("post-section");
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
   return (
     <div className="about">
       <div className="about__content">
@@ -15,7 +25,12 @@ const About: React.FC = () => {
           mind. They should also be excited to learn, as the world of Front-End
           Development keeps evolving.
         </p>
-        <button className="about__button button--primary">Sign up</button>{" "}
+        <button
+          className="about__button button--primary"
+          onClick={scrollToPostSection}
+        >
+          Sign up
+        </button>
       </div>
     </div>
   );
