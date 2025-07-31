@@ -7,6 +7,7 @@ $background-color: #f8f8f8;
 $text-color: rgb(0, 0, 0, 87%);
 $error-color: #ff0000; // Example error color
 $border-color: #cccccc; // Example border color
+$form-input-color: #7e7e7e; // Form input text and border color
 
 // Fonts
 $font-family-nunito: "Nunito", sans-serif;
@@ -28,6 +29,7 @@ $spacing-xl: 40px;
 
 // Border Radius
 $border-radius: 80px;
+$border-radius-sm: 4px;
 
 // Box Shadows
 $box-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
