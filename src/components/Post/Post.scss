@@ -1,0 +1,310 @@
+@use "../../styles/mixins" as mix;
+@use "../../styles/variables.scss" as var;
+@use "sass:color";
+
+// Post component container
+.post {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  text-align: center;
+  margin-bottom: 100px;
+
+  &__container {
+    max-width: 1170px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__title {
+    margin-bottom: 20px;
+  }
+
+  // Success state styling
+  &--success {
+    .post__title {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__success-image {
+    display: block;
+    margin: 32px auto;
+    width: 100%;
+    max-width: 328px;
+    height: auto;
+  }
+
+  // Main form container
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    gap: 50px;
+
+    width: 100%;
+    max-width: 328px;
+    margin: var.$spacing-xl auto;
+
+    @media (min-width: var.$breakpoint-tablet) {
+      max-width: 380px;
+    }
+
+    @media (min-width: var.$breakpoint-desktop) {
+      max-width: 400px;
+    }
+  }
+
+  // Form title
+  .post__form-title {
+    font-family: var.$font-family-nunito;
+    font-weight: 400;
+    font-size: var.$font-size-h1;
+    line-height: var.$line-height-h1;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.87);
+    margin-bottom: var.$spacing-lg;
+    margin-top: 0;
+
+    @media (min-width: var.$breakpoint-desktop) {
+      font-size: var.$font-size-h1;
+      line-height: var.$line-height-h1;
+    }
+  }
+
+  // Form group container
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: start;
+  }
+
+  // Labels
+  .label {
+    &.label[for="phone"] {
+      padding-left: 15px;
+      font-size: 12px;
+      line-height: 12px;
+      color: var.$form-text-color;
+      margin-top: var.$spacing-xs;
+    }
+  }
+
+  // Input fields
+  .input-field {
+    position: relative;
+    min-height: 54px;
+    padding: 14px 16px;
+    border: 1px solid var.$form-input-color;
+    color: var.$form-text-color;
+    background-color: transparent;
+
+    &::placeholder {
+      color: var.$form-text-color;
+    }
+
+    &--error {
+      border-color: var.$error-color;
+    }
+
+    &:focus {
+      border-color: var.$secondary-color;
+    }
+  }
+
+  // Hidden file input
+  .form-group input[type="file"] {
+    opacity: 0;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+
+  // File input wrapper
+  .file-input-wrapper {
+    display: flex;
+    width: 100%;
+    border: none;
+    border-radius: var.$border-radius-sm;
+    overflow: hidden;
+    min-height: 54px;
+    background-color: transparent;
+
+    &--error {
+      .file-input-button {
+        border-color: var.$error-color;
+      }
+      .file-input-placeholder {
+        border-color: var.$error-color;
+      }
+    }
+  }
+
+  // File input button
+  .file-input-button {
+    flex-shrink: 0;
+    width: 83px;
+    height: 100%;
+    padding: 14px 16px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    border-radius: var.$border-radius-sm 0 0 var.$border-radius-sm;
+    font-family: var.$font-family-nunito;
+    font-weight: 400;
+    font-size: var.$font-size-body;
+    line-height: var.$line-height-body;
+    text-align: center;
+    color: black;
+    background-color: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media (min-width: var.$breakpoint-desktop) {
+      font-size: var.$font-size-body;
+      line-height: var.$line-height-body;
+    }
+  }
+
+  // File input placeholder text
+  .file-input-placeholder {
+    flex-grow: 1;
+    padding: 14px 16px;
+    font-family: var.$font-family-nunito;
+    font-weight: 400;
+    font-size: var.$font-size-body;
+    line-height: var.$line-height-body;
+    color: var.$form-input-color;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: default;
+    border: 1px solid var.$form-input-color;
+    border-left: none;
+    border-radius: 0 var.$border-radius-sm var.$border-radius-sm 0;
+
+    @media (min-width: var.$breakpoint-desktop) {
+      font-size: var.$font-size-body;
+      line-height: var.$line-height-body;
+    }
+  }
+
+  // Radio Buttons
+  .radio-button-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-direction: column;
+
+    &__label {
+      display: block;
+      font-family: var.$font-family-nunito;
+      font-size: var.$font-size-body;
+      font-weight: 400;
+      color: var.$text-color;
+      margin-bottom: var.$spacing-xs;
+    }
+
+    .radio-button {
+      display: flex;
+      align-items: center;
+
+      input[type="radio"] {
+        display: none;
+
+        + label {
+          position: relative;
+          padding-left: 25px;
+          cursor: pointer;
+          font-size: var.$font-size-body;
+
+          &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 18px;
+            height: 18px;
+            border: 1px solid var.$border-color;
+            border-radius: 50%;
+            background-color: #fff;
+            transition: all var.$transition-speed
+              var.$transition-timing-function;
+          }
+
+          &::after {
+            content: "";
+            position: absolute;
+            left: 4px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 10px;
+            height: 10px;
+            background-color: var.$secondary-color;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity var.$transition-speed
+              var.$transition-timing-function;
+          }
+        }
+
+        &:checked + label::before {
+          border-color: var.$secondary-color;
+        }
+
+        &:checked + label::after {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  // Submit button
+  .post__submit-button {
+    width: 100px;
+    height: 34px;
+    border-radius: 80px;
+    border: none;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+
+    // Disabled state
+    &:disabled {
+      background: #b4b4b4;
+      cursor: not-allowed;
+      color: rgba(255, 255, 255, 0.87);
+    }
+
+    @media (min-width: var.$breakpoint-desktop) {
+      font-size: var.$font-size-body;
+      line-height: var.$line-height-body;
+    }
+  }
+
+  // Phone label positioning
+  .form-group #phone + .label {
+    margin-top: 4px;
+    font-size: 12px;
+    line-height: 14px;
+    color: #7e7e7e;
+    margin-bottom: 0;
+  }
+}

@@ -1,0 +1,126 @@
+@use "./variables" as vars;
+@use "sass:color";
+
+// Base Styles
+html {
+  box-sizing: border-box;
+  // Base font size for rem calculations.
+  font-size: 16px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: vars.$font-family-nunito;
+  color: vars.$text-color;
+  background-color: vars.$background-color;
+  font-size: vars.$font-size-body;
+  line-height: vars.$line-height-body;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Typography
+h1 {
+  margin: 0;
+  padding: 0;
+  font-family: vars.$font-family-nunito;
+  font-weight: 400;
+  font-size: vars.$font-size-h1;
+  line-height: vars.$line-height-h1;
+  color: vars.$text-color;
+}
+
+p {
+  font-family: vars.$font-family-nunito;
+  font-weight: 400;
+  font-size: vars.$font-size-body;
+  margin: 0;
+  padding: 0;
+  color: vars.$text-color;
+  letter-spacing: 0%;
+}
+
+// Links (basic styling)
+a {
+  color: vars.$secondary-color;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// Buttons
+button {
+  height: 34px;
+  width: 100px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: vars.$border-radius;
+  font-family: vars.$font-family-nunito;
+  font-weight: 400;
+  font-size: vars.$font-size-body; // Mobile-first button font size
+  cursor: pointer;
+  border-radius: vars.$border-radius;
+  border: none;
+}
+
+.button {
+  &--primary {
+    background-color: vars.$primary-color;
+    color: vars.$text-color;
+
+    &:hover {
+      background-color: vars.$hover-color;
+    }
+
+    &:disabled {
+      background-color: vars.$disabled-color;
+      color: #fff;
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+  }
+}
+
+// Form Elements
+.input-field,
+.textarea-field {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid vars.$form-input-color;
+  border-radius: vars.$border-radius-sm;
+  font-family: vars.$font-family-nunito;
+  font-size: vars.$font-size-body;
+  color: vars.$form-input-color;
+  background-color: transparent;
+  transition: border-color 0.3s ease;
+
+  &:focus {
+    outline: none;
+    border-color: vars.$secondary-color;
+  }
+
+  &--error {
+    border-color: vars.$error-color;
+  }
+
+  &::placeholder {
+    color: vars.$form-input-color;
+  }
+}
+
+.error-text {
+  font-family: vars.$font-family-nunito;
+  font-size: 0.8rem;
+  color: vars.$error-color;
+  margin-top: vars.$spacing-xs;
+}

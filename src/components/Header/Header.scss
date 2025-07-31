@@ -1,0 +1,40 @@
+@use "../../styles/variables.scss" as vars;
+@use "../../styles/mixins" as *;
+
+.header {
+  width: 100%;
+  background-color: #fff;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 13px 16px;
+    max-width: 1170px;
+    margin: 0 auto;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  @include on-tablet {
+    &__container {
+      padding: 17px 24px;
+    }
+  }
+
+  @include on-laptop {
+    &__container {
+      padding: 17px 32px;
+    }
+  }
+
+  @include on-desktop {
+    &__container {
+      padding: 17px 0;
+    }
+  }
+}

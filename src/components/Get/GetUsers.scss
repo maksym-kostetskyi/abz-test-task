@@ -1,0 +1,59 @@
+@use "../../styles/mixins" as mix;
+@use "../../styles/variables" as vars;
+
+.get-users {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin-bottom: 140px;
+  text-align: center;
+
+  &__container {
+    max-width: 1170px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__title {
+    margin-bottom: 50px;
+  }
+
+  &__button {
+    width: 120px;
+    margin-top: 32px;
+
+    &:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr; // Single column on mobile
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px; // Maximum width for large screens
+    margin-bottom: 50px;
+
+    // Tablet: 2 columns
+    @include mix.on-tablet {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    // Laptop+: 3 columns
+    @include mix.on-laptop {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 29px;
+    }
+  }
+}

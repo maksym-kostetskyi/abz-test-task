@@ -1,0 +1,46 @@
+// Colors
+$primary-color: #f4e041;
+$hover-color: #ffe302;
+$disabled-color: #b4b4b4;
+$secondary-color: #00bdd3;
+$background-color: #f8f8f8;
+$text-color: rgb(0, 0, 0, 87%);
+$error-color: #ff0000; // Example error color
+$border-color: #cccccc; // Example border color
+$form-input-color: #d0cfcf; // Form input text and border color
+$form-text-color: #7e7e7e;
+
+// Fonts
+$font-family-nunito: "Nunito", sans-serif;
+
+// Font Sizes
+$font-size-h1: 40px;
+$font-size-body: 16px;
+
+//line-height
+$line-height-body: 26px;
+$line-height-h1: 40px;
+
+// Spacing
+$spacing-xs: 5px;
+$spacing-sm: 10px;
+$spacing-md: 20px;
+$spacing-lg: 30px;
+$spacing-xl: 40px;
+
+// Border Radius
+$border-radius: 80px;
+$border-radius-sm: 4px;
+
+// Box Shadows
+$box-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+$box-shadow-md: 0 4px 8px rgba(0, 0, 0, 0.15);
+
+// Transition
+$transition-speed: 0.3s;
+$transition-timing-function: ease-in-out;
+
+// Breakpoints for mobile-first media queries
+$breakpoint-tablet: 768px;
+$breakpoint-laptop: 1024px;
+$breakpoint-desktop: 2560px;

@@ -6,9 +6,13 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js",
+    publicPath: process.env.NODE_ENV === "production" ? "/abz-test-task/" : "/",
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".jsx"],
+    alias: {
+      "@": path.resolve(__dirname, "."),
+    },
   },
   module: {
     rules: [
@@ -16,7 +20,7 @@ module.exports = {
         test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader", // Or 'ts-loader'
+          loader: "babel-loader",
           options: {
             presets: [
               "@babel/preset-env",
@@ -34,11 +38,26 @@ module.exports = {
         test: /\.(scss|sass)$/,
         use: ["style-loader", "css-loader", "sass-loader"],
       },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: "asset/resource",
+        generator: {
+          filename: "fonts/[name][ext]",
+        },
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        type: "asset/resource",
+        generator: {
+          filename: "images/[name][ext]",
+        },
+      },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/index.html", // HTML template
+      favicon: path.resolve(__dirname, "./assets/favicon.ico"), // Favicon path
     }),
   ],
   devServer: {
