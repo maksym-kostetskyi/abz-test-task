@@ -19,7 +19,7 @@ module.exports = {
         test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader", // Or 'ts-loader'
+          loader: "babel-loader",
           options: {
             presets: [
               "@babel/preset-env",
@@ -56,6 +56,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/index.html", // HTML template
+      favicon: path.resolve(__dirname, "./assets/favicon.ico"), // Favicon path
     }),
   ],
   devServer: {
