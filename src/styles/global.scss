@@ -15,9 +15,8 @@ html {
 }
 
 body {
-  margin: 0 auto;
+  margin: 0;
   padding: 0;
-  max-width: 1170px; // Restrict body width for better readability
   font-family: vars.$font-family-nunito;
   color: vars.$text-color;
   background-color: vars.$background-color;

@@ -15,20 +15,22 @@ const Header: React.FC = () => {
 
   return (
     <header className="header">
-      <img className="header__logo" src={logo} alt="Logo" />
-      <div className="header__buttons">
-        <button
-          className="header__button button--primary"
-          onClick={() => scrollToSection("get-users-section")}
-        >
-          Users
-        </button>
-        <button
-          className="header__button button--primary"
-          onClick={() => scrollToSection("post-section")}
-        >
-          Sign up
-        </button>
+      <div className="header__container">
+        <img className="header__logo" src={logo} alt="Logo" />
+        <div className="header__buttons">
+          <button
+            className="header__button button--primary"
+            onClick={() => scrollToSection("get-users-section")}
+          >
+            Users
+          </button>
+          <button
+            className="header__button button--primary"
+            onClick={() => scrollToSection("post-section")}
+          >
+            Sign up
+          </button>
+        </div>
       </div>
     </header>
   );

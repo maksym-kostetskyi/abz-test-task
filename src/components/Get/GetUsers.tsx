@@ -20,26 +20,28 @@ const GetUsers: React.FC<GetUsersProps> = ({
 }) => {
   return (
     <div className="get-users">
-      <h1 className="get-users__title">Working with GET request</h1>
-      {loading && displayedUsers.length === 0 ? (
-        <p className="get-users__loading">Loading...</p>
-      ) : (
-        <div className="get-users__list">
-          {displayedUsers.map((user: User) => (
-            <UserCard key={user.id} user={user} />
-          ))}
-        </div>
-      )}
+      <div className="get-users__container">
+        <h1 className="get-users__title">Working with GET request</h1>
+        {loading && displayedUsers.length === 0 ? (
+          <p className="get-users__loading">Loading...</p>
+        ) : (
+          <div className="get-users__list">
+            {displayedUsers.map((user: User) => (
+              <UserCard key={user.id} user={user} />
+            ))}
+          </div>
+        )}
 
-      {!showingAll && !loading && (
-        <button
-          className="get-users__button button--primary"
-          onClick={onShowMore}
-          disabled={loading}
-        >
-          Show more
-        </button>
-      )}
+        {!showingAll && !loading && (
+          <button
+            className="get-users__button button--primary"
+            onClick={onShowMore}
+            disabled={loading}
+          >
+            Show more
+          </button>
+        )}
+      </div>
     </div>
   );
 };
